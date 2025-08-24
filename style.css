@@ -2,3 +2,36 @@
   padding: 0;
   margin: 0;
 }
+.search-results-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-template-rows: repeat(3, 1fr); */
+  grid-auto-rows: auto;
+  gap: 10px;
+}
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: auto;
+  gap: 10px;
+}
+.movieTextContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.movie-poster {
+  width: 100%;
+}
+.movie-title {
+  font-size: 20px;
+}
+.movie-year,
+.movie-rating {
+  font-size: 16px;
+  font-weight: 600;
+}
+.movie-plot {
+  font-size: 16px;
+}
