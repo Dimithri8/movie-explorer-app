@@ -1,6 +1,13 @@
 const movieResultsContaner = document.querySelector(
   ".search-results-container"
 );
+const searchBar = document.querySelector("#search");
+const searchBtn = document.querySelector(".search-btn");
+
+searchBtn.addEventListener("click", () => {
+  const userInput = searchBar.value;
+  getMovie(userInput);
+});
 
 async function getMovie(movieName) {
   try {
@@ -10,7 +17,6 @@ async function getMovie(movieName) {
     if (!res.ok) throw Error("Movie cannot be found.");
     const movie = await res.json();
     if (movie.Response === "False") throw Error("Movie not found");
-    console.log(movie);
 
     const movieCard = document.createElement("div");
     movieCard.classList.add("movie-card");
@@ -36,19 +42,22 @@ async function getMovie(movieName) {
     moviePlot.textContent = movie.Plot;
     moviePlot.classList.add("movie-plot");
 
-    movieCard.appendChild(movieTitle);
-    movieCard.appendChild(moviePoster);
-    movieCard.appendChild(movieYear);
-    movieCard.appendChild(movieRating);
-    movieCard.appendChild(moviePlot);
+    const posterContainer = document.createElement("div");
+    const movieTextContainer = document.createElement("div");
+    movieTextContainer.classList.add("movieTextContainer");
+
+    movieCard.appendChild(posterContainer);
+    posterContainer.classList.add("poster-container");
+    posterContainer.appendChild(moviePoster);
+
+    movieCard.appendChild(movieTextContainer);
+    movieTextContainer.appendChild(movieTitle);
+    movieTextContainer.appendChild(movieYear);
+    movieTextContainer.appendChild(movieRating);
+    movieTextContainer.appendChild(moviePlot);
   } catch (error) {
     console.error(error);
   } finally {
     console.log("Hope you found your movie!");
   }
 }
-
-getMovie("Thor");
-getMovie("F1");
-getMovie("Uncharted");
-getMovie("Annabelle");
