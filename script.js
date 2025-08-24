@@ -14,7 +14,7 @@ searchBtn.addEventListener("click", () => {
 async function getMovie(movieName) {
   try {
     const res = await fetch(
-      `http://www.omdbapi.com/?s=${encodeURIComponent(
+      `https://www.omdbapi.com/?s=${encodeURIComponent(
         movieName
       )}&apikey=59ccd4a7`
     );
